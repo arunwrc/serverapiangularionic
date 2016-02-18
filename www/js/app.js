@@ -25,7 +25,7 @@ angular.module('starter', ['ionic'])
         var link = 'http://ionic-angular-api.local/api/v1/addusername';
 
         $http.post(link, {username : $scope.data.username}).then(function (res){
-            $scope.response = res.data;
+            $scope.response = res.data.msg;
             $scope.data.username = "";
         });
     };
