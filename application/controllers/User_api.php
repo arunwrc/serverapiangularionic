@@ -36,7 +36,11 @@ class User_api extends CI_Controller {
     $postdata = file_get_contents("php://input");
 	if (isset($postdata)) {
 		$request = json_decode($postdata);
-		$username = $request->username;
+        if (isset($request->username)) {
+           $username = $request->username; 
+        }else{
+            $username ="";
+        }
         $current_datetime = date('Y-m-d H:i:s');
 		if ($username != "") {
             $data = array( // inputs
