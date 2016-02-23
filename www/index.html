@@ -22,13 +22,12 @@
             </ion-header-bar>
  
             <ion-content padding="true">
-                <form ng-submit="submit()">
+                <form name="UserInsertionForm" ng-submit="submitForm(UserInsertionForm)">
                     <label class="item item-input item-stacked-label">
                         <span class="input-label">Username</span>
-                        <input type="text" name="username" placeholder="enter username" ng-model="data.username">
+                        <input type="text" name="username" placeholder="enter username" ng-model="user.username">
                     </label>
- 
-                    <input class="button button-block button-positive" type="submit" name="submit" value="Submit to server">                    
+                    <button ng-click="Manage_enterdata(user);" class="btn success">Save Changes</button>                
                 </form>
  
                 <div class="card">

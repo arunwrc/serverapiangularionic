@@ -3,6 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+var base_url = "http://ionic-angular-api.local/";
 angular.module('starter', ['ionic'])
  
 .run(function($ionicPlatform) {
@@ -19,14 +20,11 @@ angular.module('starter', ['ionic'])
 })
  
 .controller('AppCtrl', function($scope, $http) {
-    $scope.data = {};
-
-    $scope.submit = function(){
-        var link = 'http://ionic-angular-api.local/api/v1/addusername';
-
-        $http.post(link, {username : $scope.data.username}).then(function (res){
-            $scope.response = res.data.msg;
-            $scope.data.username = "";
-        });
-    };
+  $scope.user = {};  
+    $scope.Manage_enterdata = function(user,UserInsertionForm){
+        $http.post(base_url+'api/v1/addusername', user).then(function(response){
+            $scope.response = response.data.msg;    
+            $scope.user.username ="";
+        })
+    };    
 });
