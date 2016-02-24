@@ -1,6 +1,6 @@
 <?php
-require APPPATH . '/libraries/REST_Controller.php';
-class User_api extends REST_Controller {
+//require APPPATH . '/libraries/REST_Controller.php';
+class User_api extends My_Control_Panel {
 
     function __construct(){
         parent::__construct();
@@ -33,14 +33,11 @@ class User_api extends REST_Controller {
        //http://stackoverflow.com/questions/18382740/cors-not-working-php
 	
 
-    $postdata = file_get_contents("php://input");
-	if (isset($postdata)) {
-		$request = json_decode($postdata);
-        if (isset($request->username)) {
-           $username = $request->username; 
-        }else{
-            $username ="";
-        }
+        //$postdata = file_get_contents("php://input");
+        $Data = json_decode(file_get_contents('php://input'),true);  
+        if(isset($Data['username'])) {
+            $username = $Data['username']; 
+        }   
         $current_datetime = date('Y-m-d H:i:s');
 		if ($username != "") {
             $data = array( // inputs
@@ -57,12 +54,10 @@ class User_api extends REST_Controller {
 			
 		}
 		else {
-			echo json_encode(array("status" => "404","msg" => "Please enter Username"));
+			$this->response(array(RESP_STATUS => HTTP_NO_CONTENT,RESP_MSG => CREATE_FAILED));
 		}
-	}
-	else {
-		echo "Not called properly with username parameter!";
-	}
+	//}
+	
     }
 
 
