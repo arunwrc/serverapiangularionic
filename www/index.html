@@ -34,11 +34,25 @@
                     <div class="item item-text-wrap">
                         Response: <b ng-bind="response"></b>
                     </div>
-                    <div ng-if="response_error" class="item item-text-wrap">
+                    <div  class="item item-text-wrap">
                         Error: <b ng-bind="response_error"></b>
                     </div>
                 </div>
-            </ion-content>
-        </ion-pane>
+            
+        <table class="table table-striped table-bordered table-hover table-header-fixed" id="sample_1">
+            <thead>
+                <tr class="">
+                    <th> Name </th>
+                </tr>
+            </thead>
+            <tbody>
+
+               <tr ng-repeat="user in users">
+                    <td> {{user.username}} </td>                
+                </tr>
+            </tbody>
+        </table>
+        </ion-content>
+        </ion-pane>        
     </body>
 </html>

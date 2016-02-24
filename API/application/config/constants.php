@@ -107,7 +107,8 @@ define('RESP_MSG', 'resp_msg');
 define('RESP_ERROR', 'resp_error');
 define('DATA', 'data');
 
-
+define('LISTING_SUCCESS', 'Data listed successfully');
+define('NO_RECORDS', 'No records found');
 define('CREATED_SUCCESS', 'Data created successfully');
 define('CREATE_FAILED', 'Cannot create data');
 define('UPDATED_SUCCESS','Data updated successfully');
