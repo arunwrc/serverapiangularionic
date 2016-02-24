@@ -1,6 +1,6 @@
 <?php
-//require APPPATH . '/libraries/REST_Controller.php';
-class User_api extends CI_Controller {
+require APPPATH . '/libraries/REST_Controller.php';
+class User_api extends REST_Controller {
 
     function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class User_api extends CI_Controller {
 
     
 
-    function Addusername(){
+    function Addusername_post(){
        //http://stackoverflow.com/questions/18382740/cors-not-working-php
 	
 
@@ -52,8 +52,8 @@ class User_api extends CI_Controller {
                 'insertID'=> $this->db->insert_id()
             );
             $merged_data = array_merge($data,$insert_id);
-            
-            echo json_encode(array("status" => "200","msg" => "Username created successfully","data" => $merged_data));
+            $this->response(array("status" => HTTP_OK,"msg" => "Success112","data" => $merged_data));
+            //echo json_encode(array("status" => "200","msg" => "Username created successfully","data" => $merged_data));
 			
 		}
 		else {
