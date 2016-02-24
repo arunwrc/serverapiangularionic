@@ -4,17 +4,7 @@ class User_api extends CI_Controller {
 
     function __construct(){
         parent::__construct();
-        //Login check
-        
-        $this->load->model('User_model');
-        $this->load->library('form_validation');
-    }
-
-    
-
-    function Addusername(){
-       //http://stackoverflow.com/questions/18382740/cors-not-working-php
-	if (isset($_SERVER['HTTP_ORIGIN'])) {
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
         header('Access-Control-Allow-Credentials: true');
         header('Access-Control-Max-Age: 86400');    // cache for 1 day
@@ -32,6 +22,16 @@ class User_api extends CI_Controller {
 
         exit(0);
     }
+        
+        $this->load->model('User_model');
+        $this->load->library('form_validation');
+    }
+
+    
+
+    function Addusername(){
+       //http://stackoverflow.com/questions/18382740/cors-not-working-php
+	
 
     $postdata = file_get_contents("php://input");
 	if (isset($postdata)) {
@@ -48,8 +48,12 @@ class User_api extends CI_Controller {
                 'created_at' =>  $current_datetime
             );
             $this->db->insert('user', $data);
+            $insert_id = array( 
+                'insertID'=> $this->db->insert_id()
+            );
+            $merged_data = array_merge($data,$insert_id);
             
-            echo json_encode(array("status" => "200","msg" => "Username created successfully","data" => $data));
+            echo json_encode(array("status" => "200","msg" => "Username created successfully","data" => $merged_data));
 			
 		}
 		else {
