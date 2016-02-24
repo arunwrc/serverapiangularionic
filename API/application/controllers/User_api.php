@@ -1,6 +1,6 @@
 <?php
-//require APPPATH . '/libraries/REST_Controller.php';
-class User_api extends My_Control_Panel {
+require APPPATH . '/libraries/REST_Controller.php';
+class User_api extends REST_Controller {
 
     function __construct(){
         parent::__construct();
@@ -35,8 +35,13 @@ class User_api extends My_Control_Panel {
 
         //$postdata = file_get_contents("php://input");
         $Data = json_decode(file_get_contents('php://input'),true);  
+        
         if(isset($Data['username'])) {
-            $username = $Data['username']; 
+            $username = $Data['username'];
+        }else{
+            $username = "";
+            $error['1'] = "Cant be Blank";
+            $error['2'] = "Cant be Blank2";
         }   
         $current_datetime = date('Y-m-d H:i:s');
 		if ($username != "") {
@@ -54,7 +59,7 @@ class User_api extends My_Control_Panel {
 			
 		}
 		else {
-			$this->response(array(RESP_STATUS => HTTP_NO_CONTENT,RESP_MSG => CREATE_FAILED));
+			$this->response(array(RESP_STATUS => HTTP_NO_CONTENT,RESP_MSG => CREATE_FAILED,"resp_error" => $error));
 		}
 	//}
 	

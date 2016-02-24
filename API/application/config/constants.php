@@ -104,7 +104,9 @@ define('OPERATIONS', '3');
 */
 define('RESP_STATUS', 'resp_status');
 define('RESP_MSG', 'resp_msg');
+define('RESP_ERROR', 'resp_error');
 define('DATA', 'data');
+
 
 define('CREATED_SUCCESS', 'Data created successfully');
 define('CREATE_FAILED', 'Cannot create data');

@@ -34,6 +34,9 @@
                     <div class="item item-text-wrap">
                         Response: <b ng-bind="response"></b>
                     </div>
+                    <div ng-if="response_error" class="item item-text-wrap">
+                        Error: <b ng-bind="response_error"></b>
+                    </div>
                 </div>
             </ion-content>
         </ion-pane>

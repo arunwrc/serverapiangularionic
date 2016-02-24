@@ -20,10 +20,15 @@ angular.module('starter', ['ionic'])
 })
  
 .controller('AppCtrl', function($scope, $http) {
-  $scope.user = {};  
+  $scope.user = {};     
     $scope.Manage_enterdata = function(user,UserInsertionForm){
         $http.post(base_url+'api/v1/addusername', user).then(function(response){
             $scope.response = response.data.resp_msg;    
+            var errors ="";
+            for (var key in response.data.resp_error) {
+              errors += response.data.resp_error[key]+" ";
+            }
+            $scope.response_error = errors;
             $scope.user.username ="";
         })
     };    
