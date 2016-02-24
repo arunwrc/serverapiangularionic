@@ -95,6 +95,26 @@ define('ADMINISTRATOR', '1');
 define('SUPERVISOR', '2');
 define('OPERATIONS', '3');
 
+/*
+|--------------------------------------------------------------------------
+| General Response Messages
+|--------------------------------------------------------------------------
+|
+|
+*/
+define('RESP_STATUS', 'resp_status');
+define('RESP_MSG', 'resp_msg');
+define('DATA', 'data');
+
+define('CREATED_SUCCESS', 'Data created successfully');
+define('CREATE_FAILED', 'Cannot create data');
+define('UPDATED_SUCCESS','Data updated successfully');
+define('UPDATE_FAILED', 'Cannot update data');
+define('DELETED_FAILED', 'Data deleted successfully');
+define('DELETE_FAILED', 'Cannot update data');
+define('NOT_AUTHORISED', 'You are not authorised to perform this action');
+define('INVALID_LOGIN', 'Invalid credentials');
+
 
 /*
 |--------------------------------------------------------------------------

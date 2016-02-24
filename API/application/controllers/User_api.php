@@ -52,8 +52,8 @@ class User_api extends REST_Controller {
                 'insertID'=> $this->db->insert_id()
             );
             $merged_data = array_merge($data,$insert_id);
-            $this->response(array("status" => HTTP_OK,"msg" => "Success112","data" => $merged_data));
-            //echo json_encode(array("status" => "200","msg" => "Username created successfully","data" => $merged_data));
+            $this->response(array(RESP_STATUS => HTTP_OK,RESP_MSG => CREATED_SUCCESS,DATA => $merged_data));
+            //echo json_encode(array("status" => "200","resp_msg" => "Username created successfully","resp_data" => $merged_data));
 			
 		}
 		else {

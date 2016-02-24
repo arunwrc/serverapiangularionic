@@ -23,7 +23,7 @@ angular.module('starter', ['ionic'])
   $scope.user = {};  
     $scope.Manage_enterdata = function(user,UserInsertionForm){
         $http.post(base_url+'api/v1/addusername', user).then(function(response){
-            $scope.response = response.data.msg;    
+            $scope.response = response.data.resp_msg;    
             $scope.user.username ="";
         })
     };    
